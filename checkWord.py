@@ -8,8 +8,13 @@ def checkWords (word,words=words):
     availble =False
 
     if word in matches:
-        availble =True 
-        matches = word 
+        if word == 'емирта':
+            available = 'azamat'
+            matches = word + '  ' + 'Azamat san un ;)'
+        else:
+            available = True
+            matches = word
+
 
     return { 'availble':availble,'matches': matches }
 
@@ -17,3 +22,4 @@ if __name__ == '__main__':
 
     print(checkWords('амбош'))
     print( checkWords('тарих') )
+    print( checkWords('емирта') )
