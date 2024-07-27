@@ -34,22 +34,23 @@ async def send_welcome(message: types.Message):
 
 @dp.message_handler()
 async def checkImlo(message: types.Message):
-
     word = message.text
+
+    # Default response for a specific word
+    if word == "емирта":
+        await message.answer("Azamat for you ;) yeah in uzbekistan comman word this .!.")
+        return
+
     result = checkWords(word)
 
-    if result['availble'] == 'azamat':
-        response = f"✔️ {word}\nAzamat san un ;)"
-    elif result['availble']:
+    if result['availble']:
         response = f" ✔️ {word}"
-
     else:
         response = f" ❌ {word.capitalize()}\n"
-        for text in result ['matches']:
-            response += f" ✔️ { text.capitalize()}\n"
+        for text in result['matches']:
+            response += f" ✔️ {text.capitalize()}\n"
 
     await message.answer(response)
-     
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)

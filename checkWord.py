@@ -3,14 +3,24 @@ from difflib import get_close_matches
 
 
 def checkWords (word,words=words):
+
+
     word=word.lower()
     matches = set(get_close_matches(word,words))
     availble =False
 
+
+    if word == 'емирта' :
+        available = True
+        word = word + 'Azamatjan san unchun ;)'
+        return { 'availble':availble,'word': word}
+
+
     if word in matches:
+
         if word == 'емирта':
             available = 'azamat'
-            matches = word + '  ' + 'Azamat san un ;)'
+            matches = word
         else:
             available = True
             matches = word
@@ -20,6 +30,6 @@ def checkWords (word,words=words):
 
 if __name__ == '__main__':
 
-    print(checkWords('амбош'))
+
     print( checkWords('тарих') )
-    print( checkWords('емирта') )
+    # print( checkWords('') )
